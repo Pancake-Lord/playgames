@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Date and Time Display</title>
+    <title>Random Background Color</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 20%;
         }
-        #time {
-            font-size: 2em;
-            color: #333;
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Current Date and Time</h1>
-    <div id="time"></div>
+    <h1>Random Background Color</h1>
+    <button onclick="changeBackgroundColor()">Change Color</button>
 
     <script>
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleString();
-            document.getElementById('time').textContent = timeString;
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
 
-        setInterval(updateTime, 1000);
-        updateTime(); // initial call to display time immediately
+        function changeBackgroundColor() {
+            const newColor = getRandomColor();
+            document.body.style.backgroundColor = newColor;
+        }
     </script>
 </body>
 </html>
